@@ -1,0 +1,19 @@
+[ req ]
+default_bits       = 2048
+prompt             = no
+default_md         = sha256
+distinguished_name = dn
+req_extensions     = req_ext
+
+[ dn ]
+CN = auth2.cloudpak.info
+
+[ req_ext ]
+subjectAltName = @alt_names
+
+[ alt_names ]
+DNS.1 = auth2.cloudpak.info%                                                                        ➜  ~ openssl req -x509 -nodes -days 825 \
+  -newkey rsa:2048 \
+  -keyout /etc/ssl/keycloak/tls.key \
+  -out /etc/ssl/keycloak/tls.crt \
+  -config /etc/ssl/keycloak/openssl.cnf
